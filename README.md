@@ -75,8 +75,11 @@ Nest is [MIT licensed](LICENSE).
 
 ## Prisma
 
-### See database
-```npx prisma studio```
+```bash
+# See database
+$ npx prisma studio
 
-### Generate migration
-```npx prisma migrate dev```
+# Generate migration
+$ npx prisma migrate dev
+```
+
