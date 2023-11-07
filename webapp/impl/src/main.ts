@@ -10,7 +10,9 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('AC2 Grupo 3 - Hotel')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
   

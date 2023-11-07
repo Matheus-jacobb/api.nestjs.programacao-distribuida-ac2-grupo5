@@ -14,7 +14,7 @@ export class TokenProxy {
   /**
    * Construtor padrão
    */
-  constructor(token: string, expiresIn: string, refreshToken: string, refreshExpireIn: string) {
+  constructor(token: string, expiresIn: string, refreshToken: string, refreshExpireIn: string, userId: string) {
     this.token = `Bearer ${ token }`;
     this.refreshToken = `Bearer ${ refreshToken }`;
 
@@ -25,6 +25,7 @@ export class TokenProxy {
 
     this.expiresAt = new Date(now + expiresInNumber);
     this.refreshExpiresAt = new Date(now + refreshExpireInNumber);
+    this.userId = userId;
   }
 
   //#endregion
@@ -54,6 +55,9 @@ export class TokenProxy {
    */
   @ApiProperty()
   public refreshExpiresAt: Date;
+
+  @ApiProperty()
+  public userId: string;
 
   //#endregion
 

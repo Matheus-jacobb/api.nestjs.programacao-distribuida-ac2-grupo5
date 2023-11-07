@@ -1,10 +1,9 @@
-import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { randomUUID } from "crypto";
 import { PrismaService } from "../../../infra/database/prisma/prisma.service";
 import { CreateRoomPayload } from "../models/create-room.payload";
-import { UpdateRoomPayload } from "../models/update-room.payload";
 import { RoomProxy } from "../models/room.proxy";
-import { hashPassword } from "../../../helpers/hash-password";
+import { UpdateRoomPayload } from "../models/update-room.payload";
 
 @Injectable()
 export class RoomService {
@@ -12,7 +11,9 @@ export class RoomService {
   constructor(private prismaService: PrismaService) { }
 
   public findAll(): Promise<RoomProxy[]> {
-    return this.prismaService.rooms.findMany();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this.prismaService.rooms.findMany({ include: { hotel: true }});
   }
 
   public async findOne(id: string): Promise<RoomProxy> {

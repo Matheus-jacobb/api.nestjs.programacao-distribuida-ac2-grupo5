@@ -1,10 +1,15 @@
-import { Body, Controller, Delete, Get, Param, Put, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Put, Post, UseGuards, Request, ForbiddenException } from '@nestjs/common';
 import { CreateHotelPayload } from "../models/create-hotel.payload";
 import { HotelsService } from '../services/hotels.service';
 import { UpdateHotelsPayload } from '../models/update-hotels.payload';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { HotelEntity } from '../entities/hotel.entity';
+import { User } from '../../auth/decorators/user.decorator';
+import { UserEntity } from '../../users/entities/user.entity';
+import { AuthGuard } from '@nestjs/passport';
+import { ProtectRoute } from '../../auth/decorators/protect.decorator';
 
+@ApiBearerAuth()
 @ApiTags('Hotels')
 @Controller('hotels')
 export class HotelsController {
@@ -27,19 +32,31 @@ export class HotelsController {
 
   @Post()
   @ApiCreatedResponse({ type: HotelEntity })
-  async create(@Body() body: CreateHotelPayload) {
-    return this.usersService.create(body);
+  @ProtectRoute()
+  async create(@Body() body: CreateHotelPayload, @User() requestUser: UserEntity) {
+    if (requestUser.role !== 'admin')
+      throw new ForbiddenException('Você não tem autorização para realizar essa ação');
+
+    return this.usersService.create(body, requestUser);
   }
 
   @Put(':id')
   @ApiOkResponse({ type: HotelEntity })
-  update(@Param('id') id: string, @Body() body: UpdateHotelsPayload) {
+  @ProtectRoute()
+  update(@Param('id') id: string, @Body() body: UpdateHotelsPayload, @User() requestUser: UserEntity) {
+    if (requestUser.role !== 'admin')
+      throw new ForbiddenException('Você não tem autorização para realizar essa ação');
+
     return this.usersService.update(id, body);
   }
 
   @Delete(':id')
   @ApiOkResponse({ type: HotelEntity })
-  remove(@Param('id') id: string) {
+  @ProtectRoute()
+  remove(@Param('id') id: string, @User() requestUser: UserEntity) {
+    if (requestUser.role !== 'admin')
+      throw new ForbiddenException('Você não tem autorização para realizar essa ação');
+
     return this.usersService.remove(id);
   }
 }

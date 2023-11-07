@@ -3,10 +3,13 @@ import { UserEntity } from "../entities/user.entity";
 import { CreateUserPayload } from '../models/create-user.payload';
 import { UserService } from '../services/user.service';
 import { UpdateUserPayload } from '../models/update-user.payload';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ProtectRoute } from '../../auth/decorators/protect.decorator';
+import { User } from '../../auth/decorators/user.decorator';
 
 @ApiTags('Users')
 @Controller('users')
+@ApiBearerAuth()
 export class UserController {
 
   constructor(
@@ -15,20 +18,16 @@ export class UserController {
 
   @Get()
   @ApiOkResponse({ type: UserEntity, isArray: true })
-  findAll() {
+  @ProtectRoute()
+  findAll(@User() requestUser: UserEntity) {
     return this.usersService.findAll();
   }
 
   @Get(':id')
   @ApiOkResponse({ type: UserEntity })
-  findOne(@Param('id') id: string) {
+  @ProtectRoute()
+  findOne(@Param('id') id: string, @User() requestUser: UserEntity) {
     return this.usersService.findOne(id);
-  }
-
-  @Get('email/:email')
-  @ApiOkResponse({ type: UserEntity })
-  findByEmail(@Param('email') email: string) {
-    return this.usersService.findByEmail(email);
   }
 
   @Post()
@@ -39,13 +38,15 @@ export class UserController {
 
   @Put(':id')
   @ApiOkResponse({ type: UserEntity })
-  update(@Param('id') id: string, @Body() body: UpdateUserPayload) {
+  @ProtectRoute()
+  update(@Param('id') id: string, @Body() body: UpdateUserPayload, @User() requestUser: UserEntity) {
     return this.usersService.update(id, body);
   }
 
   @Delete(':id')
   @ApiOkResponse({ type: UserEntity })
-  remove(@Param('id') id: string) {
+  @ProtectRoute()
+  remove(@Param('id') id: string, @User() requestUser: UserEntity) {
     return this.usersService.remove(id);
   }
 }

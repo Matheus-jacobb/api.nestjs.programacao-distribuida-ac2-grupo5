@@ -26,7 +26,9 @@ export class HotelsService {
     return hotel;
   }
 
-  public async create(payload: CreateHotelPayload): Promise<HotelsProxy> {
+  public async create(payload: CreateHotelPayload, requesUser): Promise<HotelsProxy> {
+    console.log(requesUser);
+    
     const hotel = await this.prismaService.hotels.create({
       data: {
         id: randomUUID(),

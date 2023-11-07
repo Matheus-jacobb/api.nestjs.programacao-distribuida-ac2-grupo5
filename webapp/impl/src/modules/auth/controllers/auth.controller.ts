@@ -1,11 +1,12 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../jwt-auth.guard';
 import { LoginPayload } from '../models/login.payload';
 import { AuthService } from '../services/auth.service';
 
 @ApiTags('Auth')
 @Controller('auth')
+@ApiBearerAuth()
 export class AuthController {
 
   constructor(private authService: AuthService) {}

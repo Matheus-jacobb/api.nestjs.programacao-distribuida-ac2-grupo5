@@ -23,7 +23,6 @@ export class CreateReservationPayload {
   public endDate: string;
 
   @ApiProperty()
-  @IsNumber({}, { message: 'Valor total inválido.' })
   public totalPrice: number;
 
 }

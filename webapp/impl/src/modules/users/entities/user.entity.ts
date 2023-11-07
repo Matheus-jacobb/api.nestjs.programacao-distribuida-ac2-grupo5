@@ -20,6 +20,9 @@ export class UserEntity {
   @ApiProperty()
   password: string;
 
+  @ApiProperty({ default: 'user' })
+  role: string;
+
   @ApiProperty({ type: () => ReservationEntity, isArray: true })
   reservations: ReservationEntity[];
 }
