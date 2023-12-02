@@ -1,0 +1,846 @@
+// 20231202131733
+// http://localhost:3000/swagger-json
+
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/users": {
+      "get": {
+        "operationId": "UserController_findAll",
+        "parameters": [
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "post": {
+        "operationId": "UserController_create",
+        "parameters": [
+          
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "operationId": "UserController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UserController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "UserController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/turismo": {
+      "get": {
+        "operationId": "TurismoController_findAll",
+        "parameters": [
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TurismoEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "post": {
+        "operationId": "TurismoController_create",
+        "parameters": [
+          
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTurismoPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/turismo/{id}": {
+      "get": {
+        "operationId": "TurismoController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "put": {
+        "operationId": "TurismoController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTurismoPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "TurismoController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/user-turismo": {
+      "get": {
+        "operationId": "UserTurismoController_findAll",
+        "parameters": [
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserTurismoEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "post": {
+        "operationId": "UserTurismoController_create",
+        "parameters": [
+          
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserTurismoPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/user-turismo/{id}": {
+      "get": {
+        "operationId": "UserTurismoController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UserTurismoController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserTurismoPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "UserTurismoController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTurismoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User Turismo"
+        ],
+        "security": [
+          {
+            "bearer": [
+              
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "AF - Turismo",
+    "description": "",
+    "version": "1.0",
+    "contact": {
+      
+    }
+  },
+  "tags": [
+    
+  ],
+  "servers": [
+    
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "TurismoEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "flightId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "name",
+          "hotelId",
+          "flightId"
+        ]
+      },
+      "UserEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "default": "user"
+          },
+          "turismo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TurismoEntity"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "name",
+          "email",
+          "password",
+          "role",
+          "turismo"
+        ]
+      },
+      "CreateUserPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password"
+        ]
+      },
+      "UpdateUserPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password"
+        ]
+      },
+      "CreateTurismoPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "string"
+          },
+          "flightId": {
+            "type": "number"
+          },
+          "eventId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "hotelId",
+          "flightId",
+          "eventId"
+        ]
+      },
+      "UpdateTurismoPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "string"
+          },
+          "flightId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "hotelId",
+          "flightId"
+        ]
+      },
+      "UserTurismoEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "flightId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "name",
+          "hotelId",
+          "flightId"
+        ]
+      },
+      "CreateUserTurismoPayload": {
+        "type": "object",
+        "properties": {
+          "hotelReservationId": {
+            "type": "string"
+          },
+          "flightTicketId": {
+            "type": "number"
+          },
+          "eventTicketId": {
+            "type": "number"
+          },
+          "totalPrice": {
+            "type": "number"
+          },
+          "turismoId": {
+            "type": "number"
+          },
+          "userId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "hotelReservationId",
+          "flightTicketId",
+          "eventTicketId",
+          "totalPrice",
+          "turismoId",
+          "userId"
+        ]
+      },
+      "UpdateUserTurismoPayload": {
+        "type": "object",
+        "properties": {
+          "hotelReservationId": {
+            "type": "string"
+          },
+          "flightTicketId": {
+            "type": "number"
+          },
+          "eventTicketId": {
+            "type": "number"
+          },
+          "totalPrice": {
+            "type": "number"
+          },
+          "turismoId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "hotelReservationId",
+          "flightTicketId",
+          "eventTicketId",
+          "totalPrice",
+          "turismoId"
+        ]
+      }
+    }
+  }
+}

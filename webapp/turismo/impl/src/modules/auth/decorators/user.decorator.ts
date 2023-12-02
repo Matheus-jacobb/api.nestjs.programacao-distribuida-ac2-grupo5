@@ -1,0 +1,16 @@
+//#region Imports
+
+import { ExecutionContext, createParamDecorator } from '@nestjs/common';
+
+//#endregion
+
+/**
+ * O decorador que extrai as informações do usuário da requisição
+ */
+export const User = createParamDecorator((data: unknown, ctx: ExecutionContext) => {
+  const request = ctx.switchToHttp().getRequest();
+
+  console.log(request.user);
+
+  return request.user;
+});

@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  name      String
+  email     String   @unique
+  password  String
+  role      String?  @default("user")
+
+  userTurismo UserTurismo[]
+}
+
+model Turismo {
+  id          Int           @id @default(autoincrement())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now())
+  name        String
+  hotelId     String
+  flightId    Int
+  eventId     Int
+  userTurismo UserTurismo[]
+}
+
+model UserTurismo {
+  id        Int @id @default(autoincrement())
+  userId    Int
+  turismoId Int
+
+  hotelReservationId String
+  flightTicketId     Int
+  eventTicketId      Int
+
+  totalPrice Float
+
+  turismo Turismo? @relation(fields: [turismoId], references: [id])
+  user    Users?   @relation(fields: [userId], references: [id])
+
+  @@index([turismoId])
+}
