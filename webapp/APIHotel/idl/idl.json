@@ -1,1060 +1,1274 @@
 {
-    "openapi": "3.0.0",
-    "paths": {
-        "/auth": {
-            "post": {
-                "operationId": "AuthController_signIn",
-                "parameters": [
-
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LoginPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                },
-                "tags": [
-                    "Auth"
-                ]
+  "openapi": "3.0.0",
+  "paths": {
+    "/auth": {
+      "post": {
+        "operationId": "AuthController_signIn",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginPayload"
+              }
             }
+          }
         },
-        "/auth/me": {
-            "get": {
-                "operationId": "AuthController_getProfile",
-                "parameters": [
-
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                },
-                "tags": [
-                    "Auth"
-                ]
-            }
+        "responses": {
+          "200": {
+            "description": ""
+          }
         },
-        "/users": {
-            "get": {
-                "operationId": "UserController_findAll",
-                "parameters": [
-
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/UserEntity"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Users"
-                ]
-            },
-            "post": {
-                "operationId": "UserController_create",
-                "parameters": [
-
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateUserPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/UserEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Users"
-                ]
-            }
-        },
-        "/users/{id}": {
-            "get": {
-                "operationId": "UserController_findOne",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/UserEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Users"
-                ]
-            },
-            "put": {
-                "operationId": "UserController_update",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateUserPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/UserEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Users"
-                ]
-            },
-            "delete": {
-                "operationId": "UserController_remove",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/UserEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Users"
-                ]
-            }
-        },
-        "/users/email/{email}": {
-            "get": {
-                "operationId": "UserController_findByEmail",
-                "parameters": [{
-                    "name": "email",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/UserEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Users"
-                ]
-            }
-        },
-        "/rooms": {
-            "get": {
-                "operationId": "RoomController_findAll",
-                "parameters": [
-
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/RoomEntity"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Rooms"
-                ]
-            },
-            "post": {
-                "operationId": "RoomController_create",
-                "parameters": [
-
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateRoomPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/RoomEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Rooms"
-                ]
-            }
-        },
-        "/rooms/{id}": {
-            "get": {
-                "operationId": "RoomController_findOne",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/RoomEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Rooms"
-                ]
-            },
-            "put": {
-                "operationId": "RoomController_update",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateRoomPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/RoomEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Rooms"
-                ]
-            },
-            "delete": {
-                "operationId": "RoomController_remove",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/RoomEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Rooms"
-                ]
-            }
-        },
-        "/reservations": {
-            "get": {
-                "operationId": "ReservationController_findAll",
-                "parameters": [
-
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ReservationEntity"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Reservations"
-                ]
-            },
-            "post": {
-                "operationId": "ReservationController_create",
-                "parameters": [
-
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateReservationPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ReservationEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Reservations"
-                ]
-            }
-        },
-        "/reservations/{id}": {
-            "get": {
-                "operationId": "ReservationController_findOne",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ReservationEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Reservations"
-                ]
-            },
-            "put": {
-                "operationId": "ReservationController_update",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateReservationPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ReservationEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Reservations"
-                ]
-            },
-            "delete": {
-                "operationId": "ReservationController_remove",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ReservationEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Reservations"
-                ]
-            }
-        },
-        "/hotels": {
-            "get": {
-                "operationId": "HotelsController_findAll",
-                "parameters": [
-
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/HotelEntity"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Hotels"
-                ]
-            },
-            "post": {
-                "operationId": "HotelsController_create",
-                "parameters": [
-
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateHotelPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HotelEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Hotels"
-                ]
-            }
-        },
-        "/hotels/{id}": {
-            "get": {
-                "operationId": "HotelsController_findOne",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HotelEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Hotels"
-                ]
-            },
-            "put": {
-                "operationId": "HotelsController_update",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateHotelsPayload"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HotelEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Hotels"
-                ]
-            },
-            "delete": {
-                "operationId": "HotelsController_remove",
-                "parameters": [{
-                    "name": "id",
-                    "required": true,
-                    "in": "path",
-                    "schema": {
-                        "type": "string"
-                    }
-                }],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HotelEntity"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "Hotels"
-                ]
-            }
-        }
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
     },
-    "info": {
-        "title": "AC2 Grupo 3 - Hotel",
-        "description": "",
-        "version": "1.0",
-        "contact": {
-
-        }
+    "/auth/me": {
+      "get": {
+        "operationId": "AuthController_getProfile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
     },
-    "tags": [
-
-    ],
-    "servers": [
-
-    ],
-    "components": {
-        "schemas": {
-            "LoginPayload": {
-                "type": "object",
-                "properties": {
-                    "email": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "email",
-                    "password"
-                ]
-            },
-            "UserEntity": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "createdAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    },
-                    "reservations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ReservationEntity"
-                        }
-                    }
-                },
-                "required": [
-                    "id",
-                    "createdAt",
-                    "updatedAt",
-                    "name",
-                    "email",
-                    "password",
-                    "reservations"
-                ]
-            },
-            "HotelEntity": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "createdAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "state": {
-                        "type": "string"
-                    },
-                    "city": {
-                        "type": "string"
-                    },
-                    "bedrooms": {
-                        "$ref": "#/components/schemas/RoomEntity"
-                    },
-                    "reservations": {
-                        "$ref": "#/components/schemas/ReservationEntity"
-                    }
-                },
-                "required": [
-                    "id",
-                    "createdAt",
-                    "updatedAt",
-                    "name",
-                    "state",
-                    "city",
-                    "bedrooms",
-                    "reservations"
-                ]
-            },
-            "RoomEntity": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "createdAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "category": {
-                        "type": "string"
-                    },
-                    "bedType": {
-                        "type": "string"
-                    },
-                    "dailyPrice": {
-                        "type": "string"
-                    },
-                    "hotelId": {
-                        "type": "string"
-                    },
-                    "hotel": {
-                        "$ref": "#/components/schemas/HotelEntity"
-                    },
-                    "reservations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ReservationEntity"
-                        }
-                    }
-                },
-                "required": [
-                    "id",
-                    "createdAt",
-                    "updatedAt",
-                    "category",
-                    "bedType",
-                    "dailyPrice",
-                    "hotelId",
-                    "reservations"
-                ]
-            },
-            "ReservationEntity": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "createdAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "userId": {
-                        "type": "string"
-                    },
-                    "roomId": {
-                        "type": "string"
-                    },
-                    "hotelId": {
-                        "type": "string"
-                    },
-                    "startDate": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "endDate": {
-                        "format": "date-time",
-                        "type": "string"
-                    },
-                    "totalPrice": {
-                        "type": "number"
-                    },
-                    "user": {
-                        "$ref": "#/components/schemas/UserEntity"
-                    },
-                    "room": {
-                        "$ref": "#/components/schemas/RoomEntity"
-                    },
-                    "hotel": {
-                        "$ref": "#/components/schemas/HotelEntity"
-                    }
-                },
-                "required": [
-                    "id",
-                    "createdAt",
-                    "updatedAt",
-                    "userId",
-                    "roomId",
-                    "hotelId",
-                    "startDate",
-                    "endDate",
-                    "totalPrice"
-                ]
-            },
-            "CreateUserPayload": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "name",
-                    "email",
-                    "password"
-                ]
-            },
-            "UpdateUserPayload": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "name",
-                    "email",
-                    "password"
-                ]
-            },
-            "CreateRoomPayload": {
-                "type": "object",
-                "properties": {
-                    "category": {
-                        "type": "string"
-                    },
-                    "bedType": {
-                        "type": "string"
-                    },
-                    "dailyPrice": {
-                        "type": "string"
-                    },
-                    "hotelId": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "category",
-                    "bedType",
-                    "dailyPrice",
-                    "hotelId"
-                ]
-            },
-            "UpdateRoomPayload": {
-                "type": "object",
-                "properties": {
-                    "category": {
-                        "type": "string"
-                    },
-                    "bedType": {
-                        "type": "string"
-                    },
-                    "dailyPrice": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "category",
-                    "bedType",
-                    "dailyPrice"
-                ]
-            },
-            "CreateReservationPayload": {
-                "type": "object",
-                "properties": {
-                    "userId": {
-                        "type": "string"
-                    },
-                    "roomId": {
-                        "type": "string"
-                    },
-                    "hotelId": {
-                        "type": "string"
-                    },
-                    "startDate": {
-                        "type": "string"
-                    },
-                    "endDate": {
-                        "type": "string"
-                    },
-                    "totalPrice": {
-                        "type": "number"
-                    }
-                },
-                "required": [
-                    "userId",
-                    "roomId",
-                    "hotelId",
-                    "startDate",
-                    "endDate",
-                    "totalPrice"
-                ]
-            },
-            "UpdateReservationPayload": {
-                "type": "object",
-                "properties": {
-                    "userId": {
-                        "type": "string"
-                    },
-                    "roomId": {
-                        "type": "string"
-                    },
-                    "hotelId": {
-                        "type": "string"
-                    },
-                    "startDate": {
-                        "type": "string"
-                    },
-                    "endDate": {
-                        "type": "string"
-                    },
-                    "totalPrice": {
-                        "type": "number"
-                    }
-                },
-                "required": [
-                    "userId",
-                    "roomId",
-                    "hotelId",
-                    "startDate",
-                    "endDate",
-                    "totalPrice"
-                ]
-            },
-            "CreateHotelPayload": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "state": {
-                        "type": "string"
-                    },
-                    "city": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "name",
-                    "state",
-                    "city"
-                ]
-            },
-            "UpdateHotelsPayload": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "state": {
-                        "type": "string"
-                    },
-                    "city": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "name",
-                    "state",
-                    "city"
-                ]
+    "/users": {
+      "get": {
+        "operationId": "UserController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserEntity"
+                  }
+                }
+              }
             }
-        }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "UserController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "operationId": "UserController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UserController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "UserController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/rooms": {
+      "get": {
+        "operationId": "RoomController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoomEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Rooms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "RoomController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoomPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Rooms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/rooms/{id}": {
+      "get": {
+        "operationId": "RoomController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Rooms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "RoomController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoomPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Rooms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "RoomController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Rooms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/reservations": {
+      "get": {
+        "operationId": "ReservationController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReservationEntity"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Reservations"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "ReservationController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReservationPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Reservations"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/reservations/{id}": {
+      "get": {
+        "operationId": "ReservationController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Reservations"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "ReservationController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReservationPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Reservations"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "ReservationController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Reservations"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/reservations/user/{userId}": {
+      "get": {
+        "operationId": "ReservationController_findByUser",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReservationEntity"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Reservations"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hotels": {
+      "get": {
+        "operationId": "HotelsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HotelEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Hotels"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "HotelsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateHotelPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HotelEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Hotels"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hotels/{id}": {
+      "get": {
+        "operationId": "HotelsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HotelEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Hotels"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "HotelsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateHotelsPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HotelEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Hotels"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "HotelsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HotelEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Você não tem permissão para acessar esse recurso."
+          }
+        },
+        "tags": [
+          "Hotels"
+        ],
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "bearer": []
+          }
+        ]
+      }
     }
+  },
+  "info": {
+    "title": "AC2 Grupo 3 - Hotel",
+    "description": "",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "LoginPayload": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "UserEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "default": "user"
+          },
+          "reservations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationEntity"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "name",
+          "email",
+          "password",
+          "role",
+          "reservations"
+        ]
+      },
+      "HotelEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "bedrooms": {
+            "$ref": "#/components/schemas/RoomEntity"
+          },
+          "reservations": {
+            "$ref": "#/components/schemas/ReservationEntity"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "name",
+          "state",
+          "city",
+          "bedrooms",
+          "reservations"
+        ]
+      },
+      "RoomEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "bedType": {
+            "type": "string"
+          },
+          "dailyPrice": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "string"
+          },
+          "hotel": {
+            "$ref": "#/components/schemas/HotelEntity"
+          },
+          "reservations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationEntity"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "category",
+          "bedType",
+          "dailyPrice",
+          "hotelId",
+          "reservations"
+        ]
+      },
+      "ReservationEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "roomId": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserEntity"
+          },
+          "room": {
+            "$ref": "#/components/schemas/RoomEntity"
+          },
+          "hotel": {
+            "$ref": "#/components/schemas/HotelEntity"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "userId",
+          "roomId",
+          "hotelId",
+          "startDate",
+          "endDate",
+          "totalPrice"
+        ]
+      },
+      "CreateUserPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password"
+        ]
+      },
+      "UpdateUserPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password"
+        ]
+      },
+      "CreateRoomPayload": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "bedType": {
+            "type": "string"
+          },
+          "dailyPrice": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "category",
+          "bedType",
+          "dailyPrice",
+          "hotelId"
+        ]
+      },
+      "UpdateRoomPayload": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "bedType": {
+            "type": "string"
+          },
+          "dailyPrice": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "category",
+          "bedType",
+          "dailyPrice"
+        ]
+      },
+      "CreateReservationPayload": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "roomId": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "userId",
+          "roomId",
+          "hotelId",
+          "startDate",
+          "endDate",
+          "totalPrice"
+        ]
+      },
+      "UpdateReservationPayload": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "roomId": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "userId",
+          "roomId",
+          "hotelId",
+          "startDate",
+          "endDate",
+          "totalPrice"
+        ]
+      },
+      "CreateHotelPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "state",
+          "city"
+        ]
+      },
+      "UpdateHotelsPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "state",
+          "city"
+        ]
+      }
+    }
+  }
 }
