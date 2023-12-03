@@ -2,13 +2,13 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserTurismoPayload {
   @ApiProperty()
-  hotelReservationId: string;
+  hotelReservaId: string;
 
   @ApiProperty()
-  flightTicketId: number;
+  vooTicketId: number;
 
   @ApiProperty()
-  eventTicketId: number;
+  eventoTicketId: number;
 
   @ApiProperty()
   totalPrice: number;

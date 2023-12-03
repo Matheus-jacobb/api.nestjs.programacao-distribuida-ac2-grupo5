@@ -38,7 +38,7 @@ export class AuthService {
       updatedAt: user.updatedAt
     }, { expiresIn: refreshExpireIn });
 
-    return new TokenProxy(token, expiresIn, refreshToken, refreshExpireIn, user.id);
+    return new TokenProxy(token, expiresIn, refreshToken, refreshExpireIn, user);
   }
 
   public async authenticate(auth: LoginPayload, user: UserProxy): Promise<UserProxy> {

@@ -5,17 +5,21 @@ import { TurismoController } from '../../modules/turismo/controllers/turismo.con
 import { TurismoModule } from '../../modules/turismo/turismo.module';
 import { UserTurismoModule } from '../../modules/user-turismo/user-turismo.module';
 import { UserTurismoController } from '../../modules/user-turismo/controllers/user-turismo.controller';
+import { AuthModule } from '../../modules/auth/auth.module';
+import { AuthController } from '../../modules/auth/controllers/auth.controller';
 
 @Module({
   imports: [
+    AuthModule,
     UserModule,
     TurismoModule,
-    UserTurismoModule
+    UserTurismoModule,
   ],
   controllers: [
+    AuthController,
     UserController,
     TurismoController,
-    UserTurismoController
+    UserTurismoController,
   ],
 })
 export class HttpModule { }

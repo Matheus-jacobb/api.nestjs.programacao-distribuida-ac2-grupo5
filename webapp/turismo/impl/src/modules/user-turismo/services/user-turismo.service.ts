@@ -27,9 +27,9 @@ export class UserTurismoService {
   public async create(payload: CreateUserTurismoPayload): Promise<UserTurismoProxy> {
     const turismo = await this.prismaService.userTurismo.create({
       data: {
-        eventTicketId: payload.eventTicketId,
-        flightTicketId: payload.flightTicketId,
-        hotelReservationId: payload.hotelReservationId,
+        eventoTicketId: payload.eventoTicketId,
+        vooTicketId: payload.vooTicketId,
+        hotelReservaId: payload.hotelReservaId,
         totalPrice: payload.totalPrice,
         turismoId: payload.turismoId,
         userId: payload.userId

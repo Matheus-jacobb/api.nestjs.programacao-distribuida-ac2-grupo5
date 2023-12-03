@@ -1,6 +1,8 @@
 //#region Imports
 
 import { ApiProperty } from '@nestjs/swagger';
+import { UserEntity } from '../../users/entities/user.entity';
+import { UserProxy } from '../../users/models/user.proxy';
 
 //#endregion
 
@@ -14,7 +16,7 @@ export class TokenProxy {
   /**
    * Construtor padrão
    */
-  constructor(token: string, expiresIn: string, refreshToken: string, refreshExpireIn: string, userId: number) {
+  constructor(token: string, expiresIn: string, refreshToken: string, refreshExpireIn: string, user: UserProxy) {
     this.token = `Bearer ${ token }`;
     this.refreshToken = `Bearer ${ refreshToken }`;
 
@@ -25,7 +27,9 @@ export class TokenProxy {
 
     this.expiresAt = new Date(now + expiresInNumber);
     this.refreshExpiresAt = new Date(now + refreshExpireInNumber);
-    this.userId = userId;
+
+    delete user.password;
+    this.user = user;
   }
 
   //#endregion
@@ -57,7 +61,7 @@ export class TokenProxy {
   public refreshExpiresAt: Date;
 
   @ApiProperty()
-  public userId: number;
+  public user: UserProxy;
 
   //#endregion
 

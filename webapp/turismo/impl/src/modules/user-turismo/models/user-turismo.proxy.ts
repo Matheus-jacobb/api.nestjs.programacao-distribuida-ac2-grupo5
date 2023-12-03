@@ -1,9 +1,9 @@
 export interface UserTurismoProxy {
-  hotelReservationId: string;
+  hotelReservaId: string;
 
-  flightTicketId: number;
+  vooTicketId: number;
 
-  eventTicketId: number;
+  eventoTicketId: number;
 
   totalPrice: number;
 
