@@ -19,4 +19,7 @@ export class TurismoEntity {
   @ApiProperty()
   flightId: number;
 
+  @ApiProperty()
+  eventId: number;
+
 }
