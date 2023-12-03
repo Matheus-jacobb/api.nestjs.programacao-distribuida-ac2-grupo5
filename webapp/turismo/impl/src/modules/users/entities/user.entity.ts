@@ -1,4 +1,4 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 import { TurismoEntity } from '../../turismo/entities/turismo.entity';
 
 export class UserEntity {
@@ -13,6 +13,18 @@ export class UserEntity {
 
   @ApiProperty()
   name: string;
+
+  @ApiProperty()
+  rg: string;
+
+  @ApiProperty()
+  hotalId: number;
+
+  @ApiProperty()
+  vooId: number;
+
+  @ApiProperty()
+  eventoId: number;
 
   @ApiProperty()
   email: string;

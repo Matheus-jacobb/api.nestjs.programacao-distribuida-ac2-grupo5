@@ -1,0 +1,12 @@
+{
+  "type": "postgres",
+  "host": "db",
+  "port": 5432,
+  "username": "postgres",
+  "password": "1234567",
+  "database": "ac2-pd",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true,
+  "migrations": ["dist/migrations/*.{.ts,*.js}"],
+  "migrationsRun": true
+}

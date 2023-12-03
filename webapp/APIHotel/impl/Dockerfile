@@ -5,15 +5,12 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copia o package.json e o package-lock.json para o diretório de trabalho
-COPY package*.json ./
+COPY . .
 
 # Instala as dependências do projeto
 RUN npm install --production
-RUN npm instal @nestjs/cli
+RUN npm install @nestjs/cli
 RUN npm run build
-
-# Copia todo o código fonte para o diretório de trabalho
-COPY . .
 
 # Expõe a porta 3000 para acesso externo
 EXPOSE 3000
