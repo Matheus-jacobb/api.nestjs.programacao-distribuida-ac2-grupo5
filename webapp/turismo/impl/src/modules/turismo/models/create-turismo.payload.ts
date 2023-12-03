@@ -8,9 +8,15 @@ export class CreateTurismoPayload {
   hotelId: string;
 
   @ApiProperty()
-  flightId: number;
+  vooId: number;
 
   @ApiProperty()
-  eventId: number;
+  eventoId: number;
+
+  @ApiProperty()
+  hotelQuartoId: string;
+
+  @ApiProperty()
+  vooAssentoId: number;
 
 }

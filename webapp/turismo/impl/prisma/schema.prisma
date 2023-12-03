@@ -29,8 +29,10 @@ model Turismo {
   updatedAt   DateTime      @default(now())
   name        String
   hotelId     String
-  flightId    Int
-  eventId     Int
+  hotelQuartoId String
+  vooId    Int
+  vooAssentoId Int
+  eventoId     Int
   userTurismo UserTurismo[]
 }
 
@@ -39,9 +41,9 @@ model UserTurismo {
   userId    Int
   turismoId Int
 
-  hotelReservationId String
-  flightTicketId     Int
-  eventTicketId      Int
+  hotelReservaId String
+  vooTicketId     Int
+  eventoTicketId      Int
 
   totalPrice Float
 

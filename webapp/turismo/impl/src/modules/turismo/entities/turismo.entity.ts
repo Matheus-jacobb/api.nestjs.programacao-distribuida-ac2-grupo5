@@ -17,9 +17,9 @@ export class TurismoEntity {
   hotelId: number;
 
   @ApiProperty()
-  flightId: number;
+  vooId: number;
 
   @ApiProperty()
-  eventId: number;
+  eventoId: number;
 
 }

@@ -17,6 +17,6 @@ export class UserTurismoEntity {
   hotelId: number;
 
   @ApiProperty()
-  flightId: number;
+  vooId: number;
 
 }

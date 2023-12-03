@@ -28,9 +28,11 @@ export class TurismoService {
     const turismo = await this.prismaService.turismo.create({
       data: {
         name: payload.name,
-        flightId: payload.flightId,
+        vooId: payload.vooId,
         hotelId: payload.hotelId,
-        eventId: payload.eventId
+        eventoId: payload.eventoId,
+        hotelQuartoId: payload.hotelQuartoId,
+        vooAssentoId: payload.vooAssentoId
       }
     });
 
