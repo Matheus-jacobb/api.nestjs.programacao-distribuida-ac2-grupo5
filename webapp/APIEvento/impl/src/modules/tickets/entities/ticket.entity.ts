@@ -17,7 +17,7 @@ import { EventEntity } from '../../events/entities/event.entity';
 
 //#endregion
 
-@Entity('users')
+@Entity('tickets')
 export class TicketEntity extends BaseEntity implements ToProxy<TicketProxy> {
 
   //#region Constructor
