@@ -14,21 +14,9 @@ import { DefaultValidationMessages } from '../../../models/enums/default-validat
  */
 export class UpdateTicketPayload extends BaseCrudUpdatePayload {
 
-  /**
-   * O e-mail do usuário
-   */
-  @ApiPropertyOptional()
-  @IsOptional()
-  @IsString({ message: DefaultValidationMessages.IsString })
-  @IsEmail({}, { message: DefaultValidationMessages.IsEmail })
-  public email?: string;
-
-  /**
-   * As permissões de um usuário
-   */
-  @ApiPropertyOptional({ description: 'Only admins can change this property.' })
-  @IsOptional()
-  @IsString({ message: DefaultValidationMessages.IsString })
-  public roles?: string;
+  public userId: number;
+  public eventId: number;
+  public chair: number;
+  public isVip: boolean;
 
 }

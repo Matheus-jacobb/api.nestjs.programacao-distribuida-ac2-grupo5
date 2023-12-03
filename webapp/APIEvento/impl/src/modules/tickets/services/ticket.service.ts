@@ -82,9 +82,10 @@ export class TicketService extends BaseCrudService<TicketEntity> {
   private getEntityFromPayload(payload: CreateTicketPayload | UpdateTicketPayload, id?: number): TicketEntity {
     return new TicketEntity({
       ...isValid(id) && { id },
-      ...isValid(payload.email) && { email: payload.email },
-      ...payload instanceof UpdateTicketPayload && isValid(payload.isActive) && { isActive: payload.isActive },
-      ...payload instanceof CreateTicketPayload && isValid(payload.password) && { password: payload.password },
+      ...isValid(payload.isVip) && { isVip: payload.isVip },
+      ...isValid(payload.chair) && { chair: payload.chair },
+      ...isValid(payload.eventId) && { eventId: payload.eventId },
+      ...isValid(payload.userId) && { userId: payload.userId },
     });
   }
 
