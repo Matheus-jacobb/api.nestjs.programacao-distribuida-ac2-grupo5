@@ -16,7 +16,7 @@ const rule = {
   DB_TIMEOUT: envalid.num({ default: 20000 }),
 };
 
-const envFieldName = process.env.NODE_ENV === 'test' ? '.env.example.test' : '.env.example';
+const envFieldName = '.env';
 const processEnvObject = process.env.NODE_ENV === 'test' ? { } : process.env;
 const env = envalid.cleanEnv(processEnvObject, rule, { dotEnvPath: envFieldName, strict: true });
 
