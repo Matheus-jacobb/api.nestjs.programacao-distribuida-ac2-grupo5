@@ -29,7 +29,7 @@ export class UserService {
   public async findByEmail(email: string): Promise<UserProxy | null> {
     const user = await this.prismaService.users.findUnique({ where: { email } });
 
-    return user
+    return user;
   }
 
   public async create(payload: CreateUserPayload): Promise<UserProxy> {

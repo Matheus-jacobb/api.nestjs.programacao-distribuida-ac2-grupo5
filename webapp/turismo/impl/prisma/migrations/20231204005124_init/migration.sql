@@ -5,7 +5,6 @@ CREATE TABLE "Users" (
     "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
     "rg" TEXT,
-    "hotelId" INTEGER,
     "vooId" INTEGER,
     "eventoId" INTEGER,
     "email" TEXT NOT NULL,
@@ -23,7 +22,8 @@ CREATE TABLE "Turismo" (
     "hotelQuartoId" TEXT NOT NULL,
     "vooId" INTEGER NOT NULL,
     "vooAssentoId" INTEGER NOT NULL,
-    "eventoId" INTEGER NOT NULL
+    "eventoId" INTEGER NOT NULL,
+    "totalPrice" REAL
 );
 
 -- CreateTable
@@ -35,8 +35,8 @@ CREATE TABLE "UserTurismo" (
     "vooTicketId" INTEGER NOT NULL,
     "eventoTicketId" INTEGER NOT NULL,
     "totalPrice" REAL NOT NULL,
-    CONSTRAINT "UserTurismo_turismoId_fkey" FOREIGN KEY ("turismoId") REFERENCES "Turismo" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "UserTurismo_userId_fkey" FOREIGN KEY ("userId") REFERENCES "Users" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "UserTurismo_userId_fkey" FOREIGN KEY ("userId") REFERENCES "Users" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "UserTurismo_turismoId_fkey" FOREIGN KEY ("turismoId") REFERENCES "Turismo" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateIndex

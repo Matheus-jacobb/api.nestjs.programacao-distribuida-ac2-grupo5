@@ -8,47 +8,44 @@ datasource db {
 }
 
 model Users {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  name      String
-  rg        String?
-  hotelId   String?
-  vooId     Int?
-  eventoId  Int?
-  email     String   @unique
-  password  String
-  role      String?  @default("user")
-
-  userTurismo UserTurismo[]
-}
-
-model Turismo {
   id          Int           @id @default(autoincrement())
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @default(now())
   name        String
-  hotelId     String
-  hotelQuartoId String
-  vooId    Int
-  vooAssentoId Int
-  eventoId     Int
+  rg          String?
+  vooId       Int?
+  hotelId     String?
+  eventoId    Int?
+  email       String        @unique
+  password    String
+  role        String?       @default("user")
   userTurismo UserTurismo[]
 }
 
+model Turismo {
+  id            Int           @id @default(autoincrement())
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @default(now())
+  name          String
+  hotelId       String
+  hotelQuartoId String
+  vooId         Int
+  vooAssentoId  Int
+  eventoId      Int
+  totalPrice    Float?
+  userTurismo   UserTurismo[]
+}
+
 model UserTurismo {
-  id        Int @id @default(autoincrement())
-  userId    Int
-  turismoId Int
-
+  id             Int     @id @default(autoincrement())
+  userId         Int
+  turismoId      Int
   hotelReservaId String
-  vooTicketId     Int
-  eventoTicketId      Int
-
-  totalPrice Float
-
-  turismo Turismo? @relation(fields: [turismoId], references: [id])
-  user    Users?   @relation(fields: [userId], references: [id])
+  vooTicketId    Int
+  eventoTicketId Int
+  totalPrice     Float
+  user           Users   @relation(fields: [userId], references: [id])
+  turismo        Turismo @relation(fields: [turismoId], references: [id])
 
   @@index([turismoId])
 }
