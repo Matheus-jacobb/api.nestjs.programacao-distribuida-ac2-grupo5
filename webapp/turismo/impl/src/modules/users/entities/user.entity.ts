@@ -18,7 +18,7 @@ export class UserEntity {
   rg: string;
 
   @ApiProperty()
-  hotelId: number;
+  hotelId: string;
 
   @ApiProperty()
   vooId: number;

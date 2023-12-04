@@ -14,7 +14,7 @@ export class TurismoEntity {
   name: string;
 
   @ApiProperty()
-  hotelId: number;
+  hotelId: string;
 
   @ApiProperty()
   vooId: number;
