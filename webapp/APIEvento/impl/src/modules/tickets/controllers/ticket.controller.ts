@@ -68,10 +68,9 @@ export class TicketController extends BaseEntityCrudController<TicketEntity, Tic
   @Override()
   @ApiOkResponse({ type: TicketProxy })
   public createOne(
-    @User() requestUser: UserEntity,
     @Body() payload: CreateTicketPayload,
   ): Promise<TicketProxy> {
-    return this.service.create(requestUser, payload).then(response => mapCrud(response));
+    return this.service.create(payload).then(response => mapCrud(response));
   }
 
   @ProtectTo(RolesEnum.USER, RolesEnum.ADMIN)

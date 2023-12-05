@@ -78,7 +78,6 @@ export class AssentoService {
   }
 
   async reservar(id: number): Promise<AssentoDTO> {
-    await this.assentoRepository.update(id, { reservado: true });
     const assentoUpdated = await this.assentoRepository.findOne({
       where: { id },
     });

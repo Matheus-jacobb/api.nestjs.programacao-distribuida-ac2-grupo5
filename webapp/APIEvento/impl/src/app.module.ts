@@ -25,7 +25,6 @@ if (process.env.NODE_ENV === 'test')
     EventModule,
     PlaceModule,
     TicketsModule,
-    ...testModules,
   ],
   providers: [
     EnvModule,

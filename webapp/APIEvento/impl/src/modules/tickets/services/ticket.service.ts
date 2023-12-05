@@ -58,9 +58,9 @@ export class TicketService extends BaseCrudService<TicketEntity> {
     throw new UnauthorizedException('Você não tem permissão para realizar essa operação.');
   }
 
-  public async create(requestUser: UserEntity, payload: CreateTicketPayload): Promise<TicketEntity> {
+  public async create(payload: CreateTicketPayload): Promise<TicketEntity> {
     const entity = this.getEntityFromPayload(payload);
-    return await entity.save();
+    return await this.repository.save(entity);
   }
 
   public async update(requestUser: UserEntity, entityId: number, payload: UpdateTicketPayload): Promise<TicketEntity> {
